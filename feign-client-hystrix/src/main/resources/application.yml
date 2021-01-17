@@ -22,3 +22,6 @@ eureka:
 #开启断路器
 feign.hystrix.enabled: true
 
+#添加监控点
+management.endpoints.web.exposure.include: 'hystrix.stream'
+

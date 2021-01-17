@@ -7,9 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableEurekaClient
 @EnableFeignClients
 @EnableHystrix
+@EnableHystrixDashboard
+@EnableCircuitBreaker
 @RequestMapping
 @RestController
 @Slf4j
@@ -55,6 +59,10 @@ public class MyFeignClientHystrixApplication {
 
     /**
      * 测试熔断，当有异常发生时，如 1/0 异常就会导致熔断
+     *
+     * 访问地址 http://localhost:8765/actuator/hystrix.stream
+     * <p>
+     * 监控地址：localhost:8765/hystrix
      *
      * @param name
      * @return
