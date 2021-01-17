@@ -17,6 +17,7 @@
         <module>feign-client</module>
         <module>feign-client-hystrix</module>
         <module>zuul-server</module>
+        <module>bus-server</module>
     </modules>
 
     <name>springcloud-study</name>

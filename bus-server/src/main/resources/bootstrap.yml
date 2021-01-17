@@ -1,0 +1,39 @@
+# 应用名
+spring:
+    application:
+        name: bus-server
+
+    # 读取配置中心  分支main，配置文件格式  bus-server
+    cloud:
+        config:
+            label: main
+            discovery:
+                enabled: true
+                service-id: config-server
+server:
+    port: 8767
+
+eureka:
+    instance:
+        prefer-ip-address: true
+        #配置hostname在页面上以ip形式显示，高版本：${spring.cloud.client.ip-address}；低版本：${spring.cloud.client.ipAddress}
+        hostname: ${spring.cloud.client.ip-address}
+        #id 默认：${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${server.port}}
+        #指定 id 以机器ip显示，因为在某些情况下，发起服务调用时，根据主机名找不到ip 地址，在这里设置以ip形式展示，就能解决这个问题。
+        instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
+# 消息总线配置 刷新配置 /actuator/bus-refresh?destination=服务名:**
+spring.cloud.bus.enabled: true
+spring.cloud.bus.trace.enabled: true
+management.endpoints.web.exposure.include: bus-refresh
+
+# 配置消息总线消息通知mq
+spring.rabbitmq.host: localhost
+spring.rabbitmq.port: 5672
+spring.rabbitmq.username: guest
+spring.rabbitmq.password: guest
