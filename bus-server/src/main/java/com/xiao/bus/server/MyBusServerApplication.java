@@ -37,6 +37,9 @@ public class MyBusServerApplication {
 
     /**
      * 返回配置中心配置值
+     * 刷新配置  /actuator/bus-refresh?destination=服务名:**
+     * 如 /actuator/bus-refresh?destination=bus-server:**
+     * 或 /actuator/bus-refresh
      */
     @GetMapping("pull")
     public String pull() {

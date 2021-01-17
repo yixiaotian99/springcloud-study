@@ -24,6 +24,13 @@
     </properties>
 
     <dependencies>
+
+        <!-- 由配置中心读取配置 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
         <!-- 添加注册中心发现 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

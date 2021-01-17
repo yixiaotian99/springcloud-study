@@ -32,7 +32,7 @@ spring.cloud.bus.enabled: true
 spring.cloud.bus.trace.enabled: true
 management.endpoints.web.exposure.include: bus-refresh
 
-# 配置消息总线消息通知mq
+# 配置消息总线消息通知mq  访问 http://localhost:15672/
 spring.rabbitmq.host: localhost
 spring.rabbitmq.port: 5672
 spring.rabbitmq.username: guest
