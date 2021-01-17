@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 1/17/21 5:23 PM
  * @Description 注册成为 Eureke 客户端服务
  * @see https://blog.csdn.net/forezp/article/details/81041028
+ * <p>
+ * <p>
+ * http请求地址和资源文件映射如下:  localhost:8802/eureka-client-pull-config/dev/main
+ * <p>
+ * /{application}/{profile}[/{label}]
+ * /{application}-{profile}.yml
+ * /{label}/{application}-{profile}.yml
+ * /{application}-{profile}.properties
+ * /{label}/{application}-{profile}.properties
  **/
 @Slf4j
 @SpringBootApplication
@@ -40,6 +49,7 @@ public class MyClientPullConfigApplication {
 
     /**
      * 返回配置中心配置值
+     * localhost:8802/eureka-client-pull-config/dev/main
      */
     @GetMapping("pull")
     public String pullConfig() {
