@@ -3,10 +3,10 @@ spring:
     application:
         name: eureka-client-pull-config
 
-    # 读取配置中心  分支master，配置文件格式  eureka-client-pull-config-dev
+    # 读取配置中心  分支main，配置文件格式  eureka-client-pull-config-dev
     cloud:
         config:
-            label: master
+            label: main
             profile: dev
             discovery:
                 enabled: true
