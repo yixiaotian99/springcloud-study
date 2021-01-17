@@ -1,5 +1,0 @@
-# 应用 eureka-client 配置
-test:
-    name: zhangsan
-    address: 北京
-
