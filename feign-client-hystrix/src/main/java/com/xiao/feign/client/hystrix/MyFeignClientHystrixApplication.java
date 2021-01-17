@@ -1,5 +1,6 @@
 package com.xiao.feign.client.hystrix;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xiao.feign.client.hystrix.feign.SayHiFeign;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,8 +48,36 @@ public class MyFeignClientHystrixApplication {
      */
     @GetMapping("rpcSayHi")
     public String sayHi(@RequestParam String name) {
-
+        log.info("feign client hystrix sayHi call, name:{}", name);
         return sayHiFeign.sayHi(name);
+    }
+
+
+    /**
+     * 测试熔断，当有异常发生时，如 1/0 异常就会导致熔断
+     *
+     * @param name
+     * @return
+     */
+    @GetMapping("sayHello")
+    @HystrixCommand(fallbackMethod = "sayHelloFallBack")
+    public String sayHello(@RequestParam String name) {
+        log.info("feign client hystrix sayHello call, name:{}", name);
+
+        //测试熔断
+//        int n = 1 / 0;
+
+        return "测试熔断, name=" + name;
+    }
+
+    /**
+     * 熔断降级方法
+     * 必须和原方法有相同的方法签名，原方法有 String name 参数，熔断降级方法也必须有
+     *
+     * @return
+     */
+    private String sayHelloFallBack(String name) {
+        return "熔断发生，请重新操作";
     }
 }
 
