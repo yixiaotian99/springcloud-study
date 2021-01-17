@@ -1,9 +1,19 @@
 # 应用名
 spring:
     application:
-        name: eureka-client
+        name: eureka-client-pull-config
+
+    # 读取配置中心  分支master，配置文件格式  eureka-client-pull-config-dev
+    cloud:
+        config:
+            label: master
+            profile: dev
+            discovery:
+                enabled: true
+                service-id: config-server
+
 server:
-    port: 8762
+    port: 8763
 
 eureka:
     instance:

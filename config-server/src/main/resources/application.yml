@@ -1,0 +1,20 @@
+# 应用名
+spring:
+    application:
+        name: config-server
+    cloud:
+        config:
+            server:
+                git:
+                    # git uri仓库地址  searchPaths仓库路径  label分支
+                    uri: https://github.com/yixiaotian99/springcloud-study.git
+                    search-paths: respo
+
+                    # github公开库不需要配置用户名和密码
+                    username:
+                    password:
+            label: master   #默认分支
+
+server:
+    port: 8802
+

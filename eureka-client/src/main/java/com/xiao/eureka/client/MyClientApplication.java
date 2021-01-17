@@ -9,6 +9,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @Author sunjinwei
  * @Date 1/17/21 5:23 PM
  * @Description 注册成为 Eureke 客户端服务
+ * @see https://blog.csdn.net/forezp/article/details/81040925
  **/
 @SpringBootApplication
 @EnableDiscoveryClient

@@ -40,7 +40,7 @@
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->
-    <logger name="com.zyz.xiao" level="debug" additivity="false">
+    <logger name="com.xiao" level="debug" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>

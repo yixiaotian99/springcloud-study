@@ -2,7 +2,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
     <property name="LOGS" value="./logs" />
-    <property name="LOG_FILE" value="eureka-client" />
+    <property name="LOG_FILE" value="config-server" />
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">
