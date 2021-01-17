@@ -44,8 +44,16 @@ public class MyFeignClientApplication {
      * @return
      */
     @GetMapping("rpcSayHi")
-    public String sayHi(@RequestParam String name) {
-
+    public String rpcSayHi(@RequestParam String name) {
+        log.info("feign-client call, name={}", name);
         return sayHiFeign.sayHi(name);
+    }
+
+
+
+    @GetMapping("sayHi")
+    public String sayHi(@RequestParam String name) {
+        log.info("feign-client call, name={}", name);
+        return "feign client name:" + name;
     }
 }
