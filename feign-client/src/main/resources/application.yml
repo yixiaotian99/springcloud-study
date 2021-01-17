@@ -1,0 +1,23 @@
+# 应用名
+spring:
+    application:
+        name: feign-client
+server:
+    port: 8764
+
+eureka:
+    instance:
+        prefer-ip-address: true
+        #配置hostname在页面上以ip形式显示，高版本：${spring.cloud.client.ip-address}；低版本：${spring.cloud.client.ipAddress}
+        hostname: ${spring.cloud.client.ip-address}
+        #id 默认：${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${server.port}}
+        #指定 id 以机器ip显示，因为在某些情况下，发起服务调用时，根据主机名找不到ip 地址，在这里设置以ip形式展示，就能解决这个问题。
+        instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
+
+
